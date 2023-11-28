@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Action</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 100% van de viewporthoogte */
+            margin: 0;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        button {
+            padding: 15px 30px; /* Voeg hier aanpassingen toe aan de padding om de knoppen groter te maken */
+            font-size: 18px; /* Voeg hier aanpassingen toe aan de lettergrootte om de knoppen groter te maken */
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose an Action</h1>
+    <a href="{{ url_for('zip_upload') }}"><button>Upload Zip File</button></a>
+    <a href="{{ url_for('csv_upload') }}"><button>Upload a CSV</button></a>
+</body>
+</html>

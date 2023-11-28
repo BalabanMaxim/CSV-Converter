@@ -1,0 +1,10 @@
+table, th, td ,caption{
+  border: 1px solid;
+  border-collapse: collapse;
+}
+caption{
+  font-size: large;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  margin-top: 10%;
+}

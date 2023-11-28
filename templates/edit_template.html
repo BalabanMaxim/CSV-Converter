@@ -1,0 +1,96 @@
+<!-- new_template.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <title>Edit Template</title>
+
+    <script>
+        function validateForm() {
+            // Validate at least one checkbox is selected in each of kolom1, kolom2, and kolom3
+            var kolom1Checked = false;
+            var kolom2Checked = false;
+            var kolom3Checked = false;
+
+            var checkboxesKolom1 = document.querySelectorAll('input[name^="kolom1_"]');
+            var checkboxesKolom2 = document.querySelectorAll('input[name^="kolom2_"]');
+            var checkboxesKolom3 = document.querySelectorAll('input[name^="kolom3_"]');
+
+            kolom1Checked = Array.from(checkboxesKolom1).some(checkbox => checkbox.checked);
+            kolom2Checked = Array.from(checkboxesKolom2).some(checkbox => checkbox.checked);
+            kolom3Checked = Array.from(checkboxesKolom3).some(checkbox => checkbox.checked);
+
+            if (!kolom1Checked || !kolom2Checked || !kolom3Checked) {
+                alert("Please select at least one checkbox in each of kolom1, kolom2, and kolom3.");
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</head>
+<body>
+    <h1>Edit Template</h1>
+
+    <!-- Table for Customer Name: -->
+    <form action="{{ url_for('save_template', filename=filename) }}" method="post" onsubmit="return validateForm()">
+        <table>
+            <caption>Verplichte kolommen</caption>
+            <tr>
+                <th>Customer Name:</th>
+                <th>Product Name:</th>
+                <th>Licenses:</th>
+            </tr>
+            {% for col_name in column_names %}
+            <tr>
+                <td>
+                    <input type="checkbox" name="kolom1_{{ col_name.value }}" value="{{ col_name.value }}">
+                    {{ col_name.value }}
+                </td>
+                <td>
+                    <input type="checkbox" name="kolom2_{{ col_name.value }}" value="{{ col_name.value }}">
+                    {{ col_name.value }}
+                </td>
+                <td>
+                    <input type="checkbox" name="kolom3_{{ col_name.value }}" value="{{ col_name.value }}">
+                    {{ col_name.value }}
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <caption>Optionele kolommen</caption>
+            <tr>
+                <th >Customer ID:</th>
+              
+                <th >Product SKU:</th>
+              
+             
+            </tr>
+            {% for col_name in column_names %}
+            <tr>
+                
+                <td><input type="checkbox" name="kolom4_{{ col_name.value }}" value="{{ col_name.value }}">{{ col_name.value }}</td>
+               
+                
+                <td><input type="checkbox" name="kolom5_{{ col_name.value }}" value="{{ col_name.value }}">{{ col_name.value }}</td>
+            </tr>
+            {% endfor %}
+
+            
+        </table>
+
+        <!-- Option for "Eerst Tij Verwijderen?" -->
+        <br>
+        <label for="eerst_tij_verwijderen">Eerste rij Verwijderen?</label>
+        <input type="checkbox" name="optie1" value="yes">
+        <br>
+        <br>
+        <input type="submit" value="Save">
+    </form>
+</body>
+</html>

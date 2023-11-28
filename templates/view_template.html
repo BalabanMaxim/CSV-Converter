@@ -1,0 +1,23 @@
+<!-- view_template.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Template</title>
+</head>
+<body>
+    <h1>View Template: {{ template_name }}</h1>
+
+    <!-- Display the Company Name table -->
+    {{ table_html|safe }}
+
+    <p>Output saved in: <a href="{{ url_for('static', filename=output_file) }}" target="_blank">{{ output_file }}</a></p>
+
+    <!-- Download button -->
+    <a href="{{ url_for('download_output', filename=output_file) }}" download="output.xlsx">
+        <button>Download Excel</button>
+    </a>
+</body>
+</html>

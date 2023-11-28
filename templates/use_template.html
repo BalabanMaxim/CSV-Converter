@@ -1,0 +1,32 @@
+<!-- use_template.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Use Template</title>
+   
+</head>
+<body>
+    
+    <h1>Use a Template</h1>
+    <p>File: {{ filename }}</p>
+    <label for="template_select">Select a Template:</label>
+    <select id="template_select" name="template_name" required>
+        <option value="" disabled selected>Select a Template</option>
+        {% for template_name in template_names %}
+        <option value="{{ template_name }}">{{ template_name }}</option>
+        {% endfor %}
+    </select>
+    
+    <!-- Geef het formulier een id -->
+    <form id="view_template_form" action="{{ url_for('view_template', template_name=filename) }}" method="get" enctype="multipart/form-data">
+        
+        <input type="submit" value="Upload">
+    </form>
+
+    <!-- Container voor de tabel -->
+    <div id="table-container"></div>
+</body>
+</html>

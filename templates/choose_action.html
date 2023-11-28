@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Action</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh; /* 100% van de viewporthoogte */
+            margin: 0;
+        }
+
+        h1, p {
+            text-align: center;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        button {
+            padding: 10px 20px; /* Voeg hier aanpassingen toe aan de padding om de knoppen groter te maken */
+            font-size: 16px; /* Voeg hier aanpassingen toe aan de lettergrootte om de knoppen groter te maken */
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Choose an Action</h1>
+    <p>File: {{ filename }}</p>
+    <a href="{{ url_for('new_template', filename=filename) }}"><button>Create a New Template</button></a>
+    <a href="{{ url_for('edit_template', filename=filename) }}"><button>Edit Existing Template</button></a>
+    <a href="{{ url_for('view_template', template_name=filename) }}"><button>Use Existing Template</button></a>
+</body>
+</html>
