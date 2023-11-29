@@ -1,2 +1,6 @@
-runtime: python311
-entrypoint: C:\Users\maxim\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\gunicorn -b :$PORT app:app
+runtime: python
+env: flex
+
+entrypoint: gunicorn -b :$PORT app:app
+runtime_config:
+  python_version: 3
